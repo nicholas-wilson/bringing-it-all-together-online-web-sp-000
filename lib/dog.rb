@@ -43,15 +43,15 @@ class Dog
     dog = self.new(attributes)
   end
 
-  def self.find_or_create_by(name, breed)
+  def self.find_or_create_by(attributes)
     sql = <<-SQL
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?
       LIMIT 1
     SQL
-    search = DB[:conn].execute(sql, name, breed).first
+    search = DB[:conn].execute(sql, attributes[:name], attributes[:breed]).first
     if !search.empty?
-      self.create([name: name, breed: breed])
+      self.create(attributes)
     else
       self.find_by_id(search[0])
     end
