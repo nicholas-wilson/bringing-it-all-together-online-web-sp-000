@@ -7,4 +7,8 @@ class Dog
     @breed = attributes[:breed]
     @id = attributes[:id]
   end
+
+  def self.create_table
+    
+  end
 end
