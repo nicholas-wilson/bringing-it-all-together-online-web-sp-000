@@ -38,9 +38,8 @@ class Dog
       WHERE id = ?
       LIMIT 1
     SQL
-    DB[:conn].execute(sql, id).map do |row|
-      self.new_from_db(row)
-    end.first
+    values = DB[:conn].execute(sql, id).first
+    attributes = {id: values[0], name: values[1], breed: values[2]}
   end
 
   def self.create_table
