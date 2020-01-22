@@ -53,7 +53,7 @@ class Dog
     if !search.empty?
       self.create([name:, breed:])
     else
-      #find it!!
+      self.find_by_id(search[0])
     end
   end
 
