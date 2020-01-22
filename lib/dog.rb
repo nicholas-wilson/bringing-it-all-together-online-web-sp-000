@@ -50,7 +50,7 @@ class Dog
       LIMIT 1
     SQL
     search = DB[:conn].execute(sql, attributes[:name], attributes[:breed]).first
-    if !search.empty?
+    if search.empty?
       self.create(attributes)
     else
       self.find_by_id(search[0])
