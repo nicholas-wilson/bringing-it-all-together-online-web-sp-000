@@ -57,6 +57,17 @@ class Dog
     end
   end
 
+  def self.find_by_name(name)
+    sql = <<-SQL
+      SELECT * FROM dogs
+      WHERE name = ?
+      LIMIT 1
+    SQL
+    dog_attrs = DB[:conn].execute(sql, name).first
+    dog = {id: dog_attrs[0], name: dog_attrs[1], breed: dog_attrs[2]}
+    self.new(dog)
+  end
+
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS dogs (
