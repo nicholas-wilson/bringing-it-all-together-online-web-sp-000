@@ -19,7 +19,7 @@ class Dog
   end
 
   def update
-
+    self.save
   end
 
   def self.create(attributes)
