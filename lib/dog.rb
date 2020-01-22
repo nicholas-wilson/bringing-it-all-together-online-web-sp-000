@@ -49,9 +49,9 @@ class Dog
       WHERE name = ? AND breed = ?
       LIMIT 1
     SQL
-    search = DB[:conn].execute(sql, name, breed)
-    if !param
-      #then make one!
+    search = DB[:conn].execute(sql, name, breed).first
+    if !search.empty?
+      self.create([name:, breed:])
     else
       #find it!!
     end
