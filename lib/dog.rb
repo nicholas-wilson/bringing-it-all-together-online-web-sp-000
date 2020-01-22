@@ -40,6 +40,7 @@ class Dog
     SQL
     values = DB[:conn].execute(sql, id).first
     attributes = {id: values[0], name: values[1], breed: values[2]}
+    dog = self.new(attributes)
   end
 
   def self.create_table
