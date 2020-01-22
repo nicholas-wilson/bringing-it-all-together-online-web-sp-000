@@ -33,6 +33,7 @@ class Dog
   end
 
   def self.find_by_id(id)
+    puts id
     sql = <<-SQL
       SELECT * FROM dogs
       WHERE id = ?
