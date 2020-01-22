@@ -27,6 +27,11 @@ class Dog
     dog.save
   end
 
+  def self.new_from_db(row)
+    attributes = {id: row[0][0], name: row[0][1], breed: row[0][2]}
+    self.create(attributes)
+  end
+
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS dogs (
