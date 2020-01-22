@@ -51,7 +51,7 @@ class Dog
     SQL
     search = DB[:conn].execute(sql, name, breed).first
     if !search.empty?
-      self.create([name:, breed:])
+      self.create([name, breed])
     else
       self.find_by_id(search[0])
     end
